@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to simulate the Corona Help Bot
+void COVID19HELPBOT() {
+    printf("COVID-19 HELPBOT: Hello! I am here to provide information and assistance related to COVID-19.\n");
+    printf("You can ask me questions or request information. Type 'exit' to end the conversation.\n");
+
+    char userMessage[100];
+
+    while (1) {
+        // Get user input
+        printf("You: ");
+        fgets(userMessage, sizeof(userMessage), stdin);
+
+        // Remove newline character from the input
+        userMessage[strcspn(userMessage, "\n")] = 0;
+
+        // Check if the user wants to exit
+        if (strcmp(userMessage, "exit") == 0) {
+            printf("Corona Help Bot: Thank you for using the Corona Help Bot. Stay safe!\n");
+            break;
+        }
+
+        // Process user input
+        processUserInput(userMessage);
+    }
+}
+
+// Function to process user input
+void processUserInput(char userMessage[]) {
+    // Simplified intent detection based on keywords
+    if(strstr(userMessage, "What is COVID-19?")) {
+        respondTocovid19();
+    }else if (strstr(userMessage, "What are the symptoms of COVID 19?")) {
+        respondToSymptoms();
+    } else if (strstr(userMessage, "COVID-19 prevention measures")) {
+        respondToPrevention();
+    } else if (strstr(userMessage, "vaccination")) {
+        respondToVaccine();
+    } else {
+        respondToUnknownInput();
+    }
+}
+
+// Function to respond to details of covid 19
+void respondTocovid19() {
+    printf("COVID-19 HELPBOT: COVID-19, short for Coronavirus Disease 2019, is a highly contagious respiratory illness caused by the severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). It was first identified in December 2019 in the city of Wuhan, Hubei province, China, and has since evolved into a global pandemic..\n");
+}
+
+// Function to respond to symptoms inquiry
+void respondToSymptoms() {
+    printf("COVID-19 HELPBOT: Common COVID-19 symptoms include fever, cough, and shortness of breath, with additional possibilities such as fatigue, loss of taste or smell, body aches, and gastrointestinal symptoms. Severe cases may lead to pneumonia and respiratory distress\n");
+}
+
+// Function to respond to prevention inquiry
+void respondToPrevention() {
+    printf("COVID-19 HELPBOT: Preventive measures for COVID-19 include wearing masks, practicing good hand hygiene, maintaining physical distance from others, getting vaccinated, and following public health guidelines. These actions help reduce the spread of the virus and protect individuals and communities from infection..\n");
+}
+
+// Function to respond to vaccine inquiry
+void respondToVaccine() {
+    printf("COVID-19 HELPBOT: Vaccination helps prevent severe illness, hospitalization, and death caused by COVID-19. Vaccines have undergone rigorous testing to ensure safety and efficacy, and widespread vaccination is a key strategy to control the spread of the virus and achieve community immunity\n");
+}
+
+// Function to respond to unknown input
+void respondToUnknownInput() {
+    printf("COVID-19 HELPBOT: I'm sorry, I didn't understand. Please ask another question or type 'exit' to end.\n");
+}
+
+int main() {
+    // Start the Corona Help Bot
+    COVID19HELPBOT();
+
+    return 0;
+}
